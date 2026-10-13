@@ -1,0 +1,2 @@
+# Install only on a compatible NVIDIA CUDA/TensorRT environment.
+tensorrt>=10.0,<11.0

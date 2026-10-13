@@ -1,0 +1,7 @@
+onnx:
+  opset: 17
+  dynamic: false
+
+tensorrt:
+  precision: fp16
+  workspace_gb: 2

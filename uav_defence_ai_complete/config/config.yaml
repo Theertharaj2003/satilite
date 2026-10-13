@@ -1,0 +1,66 @@
+project:
+  name: UAV_Defence_AI_Perception
+  seed: 42
+  python_min: "3.11"
+
+paths:
+  data_root: data
+  eo_raw: data/raw/eo
+  ir_raw: data/raw/ir
+  registered: data/registered
+  processed: data/processed
+  annotations: data/annotations
+  outputs: outputs
+
+registration:
+  method: ecc
+  max_iterations: 100
+  termination_eps: 1.0e-6
+
+fusion:
+  image_size: 512
+  channels: 3
+  base_channels: 32
+  attention_heads: 4
+  checkpoint: outputs/checkpoints/fusion_best.pt
+
+# Baseline RT-DETR model. Ultralytics downloads the weight file when needed.
+detection:
+  model: rtdetr-l.pt
+  image_size: 640
+  confidence: 0.25
+  iou: 0.5
+  device: auto
+
+tracking:
+  tracker: bytetrack
+  confidence: 0.25
+  min_iou: 0.20
+
+reid:
+  enabled: true
+  model_name: osnet_x1_0
+  checkpoint: ""
+  cosine_threshold: 0.55
+
+context:
+  history_size: 30
+  stop_speed_threshold: 1.0
+  dwell_seconds: 15
+  direction_change_degrees: 60
+
+confidence:
+  review_threshold: 0.60
+  low_identity_threshold: 0.60
+  low_context_threshold: 0.60
+
+assistant:
+  provider: rule_based
+  ollama_url: http://localhost:11434
+  ollama_model: llama3.2:3b
+  top_k: 5
+
+edge:
+  opset: 17
+  fp16: true
+  int8: false

@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: uav-defence-ai-perception
+Version: 0.1.0
+Summary: Modular multimodal UAV perception research prototype
+Requires-Python: <3.14,>=3.11

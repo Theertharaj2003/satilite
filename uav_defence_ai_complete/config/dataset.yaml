@@ -1,0 +1,11 @@
+# Edit this file to point to your actual prepared dataset.
+# The format follows Ultralytics detection dataset YAML.
+path: data/processed
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: person
+  1: vehicle
+  2: drone

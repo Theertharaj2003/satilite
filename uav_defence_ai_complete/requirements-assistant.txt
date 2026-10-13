@@ -1,0 +1,2 @@
+# RAG/assistant extras. The assistant also works in deterministic fallback mode without these.
+requests>=2.32,<3

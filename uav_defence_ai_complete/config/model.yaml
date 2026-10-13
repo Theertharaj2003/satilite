@@ -1,0 +1,2 @@
+detector: rtdetr-l.pt
+fusion_checkpoint: outputs/checkpoints/fusion_best.pt
